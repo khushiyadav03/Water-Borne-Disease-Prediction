@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 from ml_model import estimate_water_quality_and_disease, predict_risk
 from ml_model import INDIAN_STATES, MONTHS
+import os
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -61,4 +62,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
